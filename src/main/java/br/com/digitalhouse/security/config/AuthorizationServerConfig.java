@@ -41,7 +41,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.secret(passwordEncoder.encode(clientPassw))
 				.authorizedGrantTypes("password", "refresh_token")
 				.scopes("write", "read")
-				.accessTokenValiditySeconds(60 * 60) // 5 minutos
+				.accessTokenValiditySeconds(4 * 60) // 5 minutos
 				.refreshTokenValiditySeconds(24 * 60 * 60); // 1 dia
 	}
 	
@@ -53,7 +53,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		
-		TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
+		var enhancerChain = new TokenEnhancerChain();
 		enhancerChain.setTokenEnhancers(
 				Arrays.asList(new JwtCustomClaimsTokenEnhancer(), jwtAccessTokenConverter()));
 		

@@ -15,7 +15,7 @@ public class ClienteRequest {
 
 	private Long id;
 	private String nome;	
-	private String sobrenome;	
+	private String sobrenome;		
 	private List<Telefone> telefones;
 	@NotBlank
 	private String cpf;		

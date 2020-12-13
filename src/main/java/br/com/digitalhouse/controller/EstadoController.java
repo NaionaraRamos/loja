@@ -30,7 +30,7 @@ public class EstadoController implements EstadoControllerOpenApi{
 		repository.save(estado);
 	}
 	
-	//@CheckSecurity.Estado.ListarEstados
+	@CheckSecurity.Estado.ListarEstados
 	@GetMapping
 	public List<Estado> listar(){
 		return repository.findAll();

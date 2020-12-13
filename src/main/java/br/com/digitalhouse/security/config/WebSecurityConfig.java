@@ -8,7 +8,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,35 +27,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		http
-//		.csrf().disable()
-//		.authorizeRequests()
-//			.antMatchers(HttpMethod.POST, "/cliente/**").hasAuthority("DH01")
-//			.antMatchers(HttpMethod.PUT, "/cliente/**").hasAuthority("DH01")
-//			.antMatchers(HttpMethod.GET, "/cliente/**").authenticated()
-//			.antMatchers("/cliente/**").permitAll()
-//			.anyRequest().authenticated()
-//        //...		
 		http
-			.authorizeRequests()
-				.antMatchers("/cliente", "/cliente/**").permitAll()
-			.and()
 			.csrf().disable()
 			.cors().and()
 			.oauth2ResourceServer().jwt()
 				.jwtAuthenticationConverter(jwtAuthenticationConverter());
 	}
-	
-//	@Override
-//	public void configure(WebSecurity web) throws Exception {
-//		
-//	    web.ignoring().antMatchers("/cliente");
-//	    web.ignoring().antMatchers("/estado/getAllEstado");
-//	    web.ignoring().antMatchers("/imagem/getAllImagem");
-//	    web.ignoring().antMatchers("/estado/{id}/cidades");
-//	    
-//	}
-
 	
 	@Bean
 	public JwtDecoder jwtDecoder() {

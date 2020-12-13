@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.digitalhouse.controller.openapi.ImagemControllerOpenAPI;
 import br.com.digitalhouse.dto.ImagemDTO;
 import br.com.digitalhouse.request.ImagemRequest;
-import br.com.digitalhouse.security.permissoes.CheckSecurity;
 import br.com.digitalhouse.service.ImagemService;
 
 @CrossOrigin
@@ -23,7 +22,6 @@ public class ImagemController implements ImagemControllerOpenAPI{
 	@Autowired
 	private ImagemService service;
 	
-	//@CheckSecurity.Imagem.SalvarImagem
 	@Override
 	@PostMapping
 	public ImagemDTO salvarFoto(ImagemRequest imagem) {
